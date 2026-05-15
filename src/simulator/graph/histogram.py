@@ -89,8 +89,10 @@ class Histogram:
 
     def draw_average_line(self, entry: HistogramEntry) -> None:
         avg_cost = round(entry.RESULT.avg_cost * 100.0, 2)
+        cost_min = round(entry.RESULT.cost_min * 100.0, 2)
+        cost_max = round(entry.RESULT.cost_max * 100.0, 2)
         self.axis.axvline(
-            label=f"{entry.SCHEMA.get_name()} coût moyen : {format_number(avg_cost)} %",
+            label=f"{entry.SCHEMA.get_name()} coût moyen : {format_number(avg_cost)} % (min : {format_number(cost_min)} %, max : {format_number(cost_max)} %)",
             x=entry.RESULT.avg_cost,
             color=entry.COLOR,
             linestyle=self.LINES_STYLES[self.ENTRIES.index(entry)],
