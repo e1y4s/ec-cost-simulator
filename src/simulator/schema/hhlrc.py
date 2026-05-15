@@ -46,7 +46,10 @@ class HHLRC(Schema):
             tx.difference_update(lost_parities) #enlever toutes les parités perdues de tx qui ont déjà été reconstruites
             if len(tx)==0: #cas où il n'y a pas de symboles perdus(si on a uniquement des parités perdues)
                 return self.C if cConstructionlocality + cConstructionParity > self.C else cConstructionlocality + cConstructionParity
-        c = self.__pb_decode_cost(tx, dejaLu) + cConstructionParity + cConstructionlocality
+        c = self.__pb_decode_cost(tx, dejaLu)
+        if c == self.F:
+            return self.C
+        c += cConstructionParity + cConstructionlocality
         return self.C if c == self.F or c > self.C else c
 
     def get_settings(self) -> dict[str, float]:
