@@ -17,6 +17,6 @@ def build_params_list(n: int, e_min: int, ratios: tuple[float, ...]) -> list[tup
             params_list.append(params)
     return params_list
 
-def format_number(value) -> str:
-    s = f"{round(value, 1)}"
+def format_number(value, precision: int = 1) -> str:
+    s = f"{round(value, precision)}"
     return s if not '.' in s else s.rstrip('0').rstrip('.')

@@ -121,7 +121,7 @@ class Histogram:
     def setup_figure(self) -> None:
         title: str = ""
         for entry in self.ENTRIES:
-            settings_str = ", ".join([f"{k}={format_number(v)}" for k, v in entry.SCHEMA.get_settings().items()])
+            settings_str = ", ".join([f"{k}={format_number(v, 2)}" for k, v in entry.SCHEMA.get_settings().items()])
             title += f"{entry.SCHEMA.get_name()}({settings_str})\n"
         self.axis.set_title(title)
         self.figure.tight_layout()
