@@ -1,7 +1,3 @@
 #!/usr/bin/env bash
-set -euo pipefail
-python -m venv .venv
-source .venv/bin/activate
-pip install -U pip
-pip install -e ".[dev]"
-python "src/simulator/main.py"
+source "$(dirname "$0")/setup.sh"
+python src/simulator/main.py
